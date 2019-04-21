@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="maven.CommunitySystem.dao.ICommunityDao">
+    <resultMap id="BaseResultMap" type="maven.CommunitySystem.entity.Community">
+        <result column="id" property="id" jdbcType="INTEGER" />
+        <result column="Communityname" property="communityname" jdbcType="VARCHAR" />
+        <result column="membernum" property="membernum" jdbcType="VARCHAR" />
+        <result column="create_time" property="createtime" jdbcType="DATE" />
+        <result column="url" property="url" jdbcType="VARCHAR" />
+    </resultMap>
+ 
+ 	<!-- 查询所有社团信息 -->
+ 	<select id="CheckCommunitydata" resultType="maven.CommunitySystem.entity.Community">
+        SELECT
+        id,Communityname,membernum,create_time,url
+        FROM
+        Community
+        LIMIT
+        20
+    </select>
+    
+    <!--用户登录 -->
+    <select id="Login" parameterType="java.util.Map" resultType="maven.CommunitySystem.entity.Community">
+        SELECT
+        *
+        FROM
+        Community
+        WHERE
+        Communityname=#{Communityname,jdbcType=VARCHAR}
+    </select>
+    
+    <!--添加用户 -->
+    <insert id="AddCommunity" parameterType="java.util.Map">  
+        INSERT 
+        INTO 
+        Community
+        (Communityname,email,create_time,url) 
+        VALUES (#{Communityname,jdbcType=VARCHAR}, null, null, null)  
+    </insert>
+    
+    <!--删除用户 -->
+    <delete id="DeleteCommunity" parameterType="java.util.Map">
+        DELETE
+        FROM
+        Community
+        WHERE
+        Communityname=#{communityname,jdbcType=VARCHAR}
+    </delete>
+    
+    <!--用户查询 -->
+    <select id="SelectCommunity" parameterType="java.lang.String" resultType="maven.CommunitySystem.entity.Community">
+        SELECT
+        *
+        FROM
+        Community
+        WHERE
+        Communityname=#{Communityname,jdbcType=VARCHAR}
+    </select>
+    
+    <!--更新信息 -->
+    <update id="UpdateCommunity" parameterType="java.util.Map">
+        UPDATE
+        Community
+        SET
+        Communityname=#{newname,jdbcType=VARCHAR}
+        WHERE
+        Communityname=#{oldname,jdbcType=VARCHAR}
+    </update>
+ 
+</mapper> 
