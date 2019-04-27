@@ -1,5 +1,6 @@
 package maven.CommunitySystem.dao;
  
+import java.util.ArrayList;
 import java.util.Map;
  
 import maven.CommunitySystem.entity.User;
@@ -12,17 +13,25 @@ public interface IUserDao {
      * @param map
      * @return
      */
-    public User Login(Map<String, String> map);//登录
+    public User Login(Map<String, String> map);//鐧诲綍
  
-    public User SelectUser(String s);//根据id查询用户信息
+    public User SelectUser(String s);//鎼滅储鐢ㄦ埛
     
-    public User SelectUserByEail(String email);//根据邮箱查询用户信息
+    public User SelectUserByEail(String email);//鏍规嵁閭鎼滅储鐢ㄦ埛
     
-    public boolean UpdateUser(Map<String, String> map);//更新数据
+    public User SelectUserId(String id);//鏍规嵁id鎼滅储鐢ㄦ埛
     
-    public boolean AddUser(Map<String, String> map);//添加用户
+    public boolean UpdateUser(Map<String, String> map);//鏇存柊鐢ㄦ埛淇℃伅
     
-    public boolean DeleteUser(Map<String, String> map);//删除用户
+    public boolean AddUser(Map<String, String> map);//娣诲姞鐢ㄦ埛
     
-    public boolean changes(Map<String, String> map);//更改信息
+    public boolean DeleteUser(Map<String, String> map);//鐢ㄦ埛娉ㄩ攢
+    
+    public boolean changes(Map<String, String> map);//鏇村畬鏁寸殑鏇存柊鐢ㄦ埛淇℃伅
+    
+    public ArrayList<User> Checkmemberdata(String community);//鑾峰彇鎴愬憳淇℃伅
+    
+    public boolean applycommunity(Map<String, String> map);//鐢宠绀惧洟
+
+    public boolean cancelcommunity(Map<String, String> map);//鍙栨秷鐢宠
 }

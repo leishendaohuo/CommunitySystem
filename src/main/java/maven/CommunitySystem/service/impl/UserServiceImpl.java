@@ -28,6 +28,10 @@ public class UserServiceImpl implements IUserService {
     	return userDao.SelectUser(email);
     }
     
+    public User SelectUserId(String id) {
+    	return userDao.SelectUserId(id);
+    }
+    	
     public boolean UpdateUser(Map<String, String> map) {
     	return userDao.UpdateUser(map);
     };
@@ -40,7 +44,19 @@ public class UserServiceImpl implements IUserService {
     	return userDao.DeleteUser(map);
     }
     
-    public boolean changes(Map<String, String> map) {//更改信息
+    public boolean changes(Map<String, String> map) {
     	return userDao.changes(map);
+    }
+    
+    public ArrayList<User> Checkmemberdata(String community){
+    	return userDao.Checkmemberdata(community);
+    }
+    
+    public boolean applycommunity(Map<String, String> map) {
+    	return userDao.applycommunity(map);
+    }
+    
+    public boolean cancelcommunity(Map<String, String> map) {
+    	return userDao.cancelcommunity(map);
     }
 }

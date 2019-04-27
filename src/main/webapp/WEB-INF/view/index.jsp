@@ -1,9 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@page import="java.util.*" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
 			+ path + "/";
+%>
+<%
+	String strTime="";
+	Calendar c=Calendar.getInstance();
+	int hh=c.get(Calendar.HOUR_OF_DAY);
+	int mm=c.get(Calendar.MINUTE);
+	int ss=c.get(Calendar.SECOND);
+	if(mm<10){
+		strTime=hh+":0"+mm;
+	}else{
+		strTime=hh+":"+mm;
+	}
+	response.setHeader("refresh", "60;url=index");
 %>
 <html lang="en" class="no-js">
 <head>
@@ -29,6 +43,7 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
+                
                     <div class="col-md-3">
                         <div class="card p-4">
                             <div class="card-body d-flex justify-content-between align-items-center">
@@ -45,90 +60,117 @@
                             </div>
                         </div>
                     </div>
-
+                    
                     <div class="col-md-3">
-                        <div class="card p-4">
-                            <div class="card-body d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="h4 d-block font-weight-normal mb-2">$32,400</span>
-                                    <span class="font-weight-light">Income</span>
-                                </div>
+                    <div class="card p-4">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="h4 d-block font-weight-normal mb-2"><%=strTime %></span>
+                                <span class="font-weight-light">Time</span>
+                            </div>
 
-                                <div class="h2 text-muted">
-                                    <i class="icon icon-wallet"></i>
-                                </div>
+                            <div class="h2 text-muted">
+                                <i class="icon icon-clock"></i>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card p-4">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <div>
+                                <span class="h4 d-block font-weight-normal mb-2">$-32,400</span>
+                                <span class="font-weight-light">Income</span>
+                            </div>
 
-                    <div class="col-md-3">
-                        <div class="card p-4">
-                            <div class="card-body d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="h4 d-block font-weight-normal mb-2">900</span>
-                                    <span class="font-weight-light">Downloads</span>
-                                </div>
-
-                                <div class="h2 text-muted">
-                                    <i class="icon icon-cloud-download"></i>
-                                </div>
+                            <div class="h2 text-muted">
+                                <i class="icon icon-wallet"></i>
                             </div>
                         </div>
                     </div>
+                </div>
+                
+                <div class="col-md-3">
+                    <div class="card">
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <span class="h4 d-block font-weight-normal mb-2">1</span>
+                                <span class="font-weight-light">New Users</span>
+                            </div>
 
-                    <div class="col-md-3">
-                        <div class="card p-4">
-                            <div class="card-body d-flex justify-content-between align-items-center">
-                                <div>
-                                    <span class="h4 d-block font-weight-normal mb-2">32s</span>
-                                    <span class="font-weight-light">Time</span>
-                                </div>
-
-                                <div class="h2 text-muted">
-                                    <i class="icon icon-clock"></i>
+                            <div class="mt-4">
+                                <div class="progress">
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: 1%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            
+        <div class="row mt-4">
+                <div class="col-md-4">
+                    <div class="card text-white border-0">
+                    	<a href="#">
+                    		<img src="<%=basePath%>assets/img/backgrounds/6.jpg" width="350" height="200">
+                    	</a>    
+                    </div>
+                </div>
 
-                <div class="row ">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="card-header">
-                                Total Users
-                            </div>
+                <div class="col-md-4">
+                    <div class="card text-white border-0">
+                    	<a href="#">
+                    		<img src="<%=basePath%>assets/img/backgrounds/7.jpg" width="350" height="200">
+                    	</a>   
+                    </div>
+                </div>
 
-                            <div class="card-body p-0">
-                                <div class="p-4">
-                                    <canvas id="line-chart" width="100%" height="20"></canvas>
-                                </div>
+                <div class="col-md-4">
+                    <div class="card text-white border-0">
+                    	<a href="#">
+                    		<img src="<%=basePath%>assets/img/backgrounds/8.jpg" width="350" height="200">
+                    	</a>     
+                    </div>
+                </div>
+            </div>
+        <div class="row">
+                <div class="col-md-12 mb-8">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-toggle="tab" href="#home" role="tab" aria-controls="home">Home</a>
+                        </li>
 
-                                <div class="justify-content-around mt-4 p-4 bg-light d-flex border-top d-md-down-none">
-                                    <div class="text-center">
-                                        <div class="text-muted small">Total Traffic</div>
-                                        <div>12,457 Users (40%)</div>
-                                    </div>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#profile" role="tab" aria-controls="profile">Profile</a>
+                        </li>
 
-                                    <div class="text-center">
-                                        <div class="text-muted small">Banned Users</div>
-                                        <div>95,333 Users (5%)</div>
-                                    </div>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="tab" href="#messages" role="tab" aria-controls="messages">Messages</a>
+                        </li>
+                    </ul>
 
-                                    <div class="text-center">
-                                        <div class="text-muted small">Page Views</div>
-                                        <div>957,565 Pages (50%)</div>
-                                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="home" role="tabpanel">
+                            1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </div>
 
-                                    <div class="text-center">
-                                        <div class="text-muted small">Total Downloads</div>
-                                        <div>957,565 Files (100 TB)</div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="tab-pane" id="profile" role="tabpanel">
+                            2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                        </div>
+
+                        <div class="tab-pane" id="messages" role="tabpanel">
+                            3. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                            dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="my-4">
+            	<a href="login" class="dropdown-item">
+            		<button type="button" class="btn btn-block btn-primary">loginout</button>
+            	</a>
             </div>
         </div>
     </div>

@@ -7,58 +7,68 @@ public class Community implements Serializable {
  
     private static final long serialVersionUID = 1L;
     /*
-     *	 ÉçÍÅid
+     *	ç¤¾å›¢åç§°
      */
-    private int id;
+    private String name;
     /*
-     *	 ÉçÍÅÃû
+     *	åˆ›å»ºæ—¶é—´
      */
-    private String communityname;
+    private String createdate;
     /*
-     *	 ÓÊÏä
+     *	æˆå‘˜æ•°é‡
      */
-    private String membernum;
+    private String number;
     /*
-     *	 ´´½¨Ê±¼ä
+     *	ç¤¾å›¢ç®€ä»‹
      */
-    private String createtime;
+    private String recommend;
     /*
-     *	Í·Ïñurl
+     * è£èª‰
 	 */
-	private String url;
-	public int getId() {
-		return id;
+	private String award;
+	/*
+     * åˆ›å»ºäºº
+	 */
+	private String creator;
+	
+	public String getName() {
+		return name;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getCommunityname() {
-		return communityname;
+	public String getCreatedate() {
+		return createdate;
 	}
-	public void setCommunityname(String communityname) {
-		this.communityname = communityname;
+	public void setCreatedate(String createdate) {
+		this.createdate = createdate;
 	}
-	public String getMembernum() {
-		return membernum;
+	public String getNumber() {
+		return number;
 	}
-	public void setMembernum(String membernum) {
-		this.membernum = membernum;
+	public void setNumber(String number) {
+		this.number = number;
 	}
-	public String getCreatetime() {
-		return createtime;
+	public String getRecommend() {
+		return recommend;
 	}
-	public void setCreatetime(String createtime) {
-		this.createtime = createtime;
+	public void setRecommend(String recommend) {
+		this.recommend = recommend;
 	}
-	public String getUrl() {
-		return url;
+	public String getAward() {
+		return award;
 	}
-	public void setUrl(String url) {
-		this.url = url;
+	public void setAward(String award) {
+		this.award = award;
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-     
+	public String getCreator() {
+		return creator;
+	}
+	public void setCreator(String creator) {
+		this.creator = creator;
+	}
  
 }

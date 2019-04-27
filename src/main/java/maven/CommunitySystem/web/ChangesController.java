@@ -5,7 +5,9 @@ import java.util.List;
 import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -31,60 +33,98 @@ public class ChangesController{
 	
 	@RequestMapping("/changes")
 	public ModelAndView login(HttpServletRequest req, ModelAndView mv) {
-		Map<String, String> map = new HashMap<String, String>();
-		//Èç¹ûÓĞĞŞ¸ÄÃû×ÖÔòĞŞ¸Ä£¬·ñÔò±£Áô
-		map.put("oldusername", req.getParameter("oldusername"));
-		if (req.getParameter("newusername")!="") {
-			map.put("newusername", req.getParameter("newusername"));
-		}
-		else {
-			map.put("newusername", req.getParameter("oldusername"));
-		}
-		
-		//Èç¹ûÓĞĞŞ¸ÄÓÊÏäÔòĞŞ¸Ä£¬·ñÔò±£Áô
-		map.put("oldemail", req.getParameter("oldemail"));
-		if (req.getParameter("newemail")!="") {
-			map.put("newemail", req.getParameter("newemail"));
-		}
-		else {
-			map.put("newemail", req.getParameter("oldemail"));
-		}
-		
-		//Èç¹ûÓĞĞŞ¸ÄÃÜÂëÔòĞŞ¸Ä£¬·ñÔò±£Áô
-		map.put("oldpassword", req.getParameter("oldpassword"));
-		if (req.getParameter("newpassword")!="") {
-			map.put("newpassword", req.getParameter("newpassword"));
-		}
-		else {
-			map.put("newpassword", req.getParameter("oldpassword"));
-		}
-		
-		if (userService.changes(map)) {//ĞŞ¸Ä³É¹¦
-			Map<String, String> map1 = new HashMap<String, String>();        
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");
+		}else {
+			Map<String, String> map = new HashMap<String, String>();
+			//å¦‚æœæœ‰ä¿®æ”¹åˆ™ä¿®æ”¹ï¼Œå¦åˆ™ä¿æŒä¸å˜
+			map.put("id", (String)mySession.getAttribute("id"));
+			map.put("oldusername", req.getParameter("oldusername"));
+			if (req.getParameter("newusername")!="") {
+				map.put("newusername", req.getParameter("newusername"));
+			}
+			else {
+				map.put("newusername", req.getParameter("oldusername"));
+			}
+			
+			//å¦‚æœæœ‰ä¿®æ”¹åˆ™ä¿®æ”¹ï¼Œå¦åˆ™ä¿æŒä¸å˜
+			map.put("oldemail", req.getParameter("oldemail"));
 			if (req.getParameter("newemail")!="") {
-				map1.put("email", req.getParameter("newemail"));
+				map.put("newemail", req.getParameter("newemail"));
 			}
 			else {
-				map1.put("email", req.getParameter("oldemail"));
+				map.put("newemail", req.getParameter("oldemail"));
 			}
+			
+			//å¦‚æœæœ‰ä¿®æ”¹åˆ™ä¿®æ”¹ï¼Œå¦åˆ™ä¿æŒä¸å˜
+			map.put("oldcollege", req.getParameter("oldcollege"));
+			if (req.getParameter("newcollege")!="") {
+				map.put("newcollege", req.getParameter("newcollege"));
+			}
+			else {
+				map.put("newcollege", req.getParameter("oldcollege"));
+			}
+			
+			//å¦‚æœæœ‰ä¿®æ”¹åˆ™ä¿®æ”¹ï¼Œå¦åˆ™ä¿æŒä¸å˜
+			map.put("oldmajor", req.getParameter("oldmajor"));
+			if (req.getParameter("newmajor")!="") {
+				map.put("newmajor", req.getParameter("newmajor"));
+			}
+			else {
+				map.put("newmajor", req.getParameter("oldmajor"));
+			}
+			//å¦‚æœæœ‰ä¿®æ”¹åˆ™ä¿®æ”¹ï¼Œå¦åˆ™ä¿æŒä¸å˜
+			map.put("oldclass", req.getParameter("oldclass"));
+			if (req.getParameter("newclass")!="") {
+				map.put("newclass", req.getParameter("newclass"));
+			}
+			else {
+				map.put("newclass", req.getParameter("oldclass"));
+			}
+			//å¦‚æœæœ‰ä¿®æ”¹åˆ™ä¿®æ”¹ï¼Œå¦åˆ™ä¿æŒä¸å˜
+			map.put("oldgrade", req.getParameter("oldgrade"));
+			if (req.getParameter("newgrade")!="") {
+				map.put("newgrade", req.getParameter("newgrade"));
+			}
+			else {
+				map.put("newgrade", req.getParameter("oldgrade"));
+			}
+			
+			//å¦‚æœæœ‰ä¿®æ”¹åˆ™ä¿®æ”¹ï¼Œå¦åˆ™ä¿æŒä¸å˜
+			map.put("oldpassword", req.getParameter("oldpassword"));
 			if (req.getParameter("newpassword")!="") {
-				map1.put("password", req.getParameter("newpassword"));
+				map.put("newpassword", req.getParameter("newpassword"));
 			}
 			else {
-				map1.put("password", req.getParameter("oldpassword"));
-			}     
-			User user = userService.Login(map1);
-			HttpSession mySession=req.getSession(true);
-			if (user != null) {
-				mySession.setAttribute( "id", user.getId());
-				mySession.setAttribute( "username", user.getUsername());
-				mySession.setAttribute( "password", user.getPassword());
-				mySession.setAttribute( "email", user.getEmail());
+				map.put("newpassword", req.getParameter("oldpassword"));
 			}
-			mv.setViewName("settings");
-		} else {//ĞŞ¸ÄÊ§°Ü                  
-			mv.setViewName("settings");
-		}        
+			
+			if (userService.changes(map)) {//æ›´æ–°ä¿¡æ¯
+				Map<String, String> map1 = new HashMap<String, String>();        
+				map1.put("id",(String)mySession.getAttribute("id"));
+				if (req.getParameter("newpassword")!="") {
+					map1.put("password", req.getParameter("newpassword"));
+				}
+				else {
+					map1.put("password", req.getParameter("oldpassword"));
+				}     
+				User user = userService.Login(map1);
+				if (user != null) {
+					mySession.setAttribute( "id", user.getId());
+					mySession.setAttribute( "username", user.getUsername());
+					mySession.setAttribute( "password", user.getPassword());
+					mySession.setAttribute( "email", user.getEmail());
+					mySession.setAttribute( "college", user.getCollege());
+					mySession.setAttribute( "major", user.getMajor());
+					mySession.setAttribute( "class", user.getIclass());
+					mySession.setAttribute( "grade", user.getGrade());
+				}
+				mv.setViewName("settings");
+			} else {              
+				mv.setViewName("settings");
+			}
+		}
 		return mv;   
 	}
 }

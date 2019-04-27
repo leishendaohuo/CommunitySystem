@@ -9,114 +9,127 @@ public class User implements Serializable {
     /*
      * id
      */
-    private int id;
+    private String id;
     /*
-     *	 ÓÃ»§Ãû
+     *	ç”¨æˆ·å
      */
     private String username;
     /*
-     *	ÃÜÂë
+     * å¯†ç 
      */
     private String password;
     /*
-     *	 ÓÊÏä
+     *	é‚®ç®±
      */
     private String email;
     /*
-     *	 ´´½¨Ê±¼ä
+     * å­¦é™¢
      */
-    private String createTime;
+    private String college;
     /*
-     *	 ÉÏÒ»´ÎµÇÂ¼Ê±¼ä
+     *	ä¸“ä¸š
      */
-    private String lastLoginTime;
+    private String major;
     /*
-     *	 ÓÃ»§ÀàĞÍ£¬0£ºÆÕÍ¨ÓÃ»§£¬1£º¹ÜÀíÔ±
+     *	ç­çº§
+     */
+    private String iclass;
+    /*
+     *	å¹´çº§
+     */
+    private String grade;
+    /*
+     *	ç”¨æˆ·èº«ä»½
      */
     private int usertype;
     /*
-     *	ËùÊôÉçÍÅ
+     * æ‰€å±ç¤¾å›¢
 	 */
-	private String belongcommunity;
+	private String community;
 	/*
-     *	Í·Ïñurl
+     * ç¤¾å›¢èŒä½
      */
-	private String headimg;
+	private String position;
+	/*
+     *	ç”³è¯·çŠ¶æ€ï¼Œ0ï¼šæœªç”³è¯·ï¼›1ï¼šç”³è¯·ä¸­ï¼›2ï¼šå·²é€šè¿‡
+	 */
+	private int status;
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getCollege() {
+		return college;
+	}
+	public void setCollege(String college) {
+		this.college = college;
+	}
+	public String getMajor() {
+		return major;
+	}
+	public void setMajor(String major) {
+		this.major = major;
+	}
+	public String getIclass() {
+		return iclass;
+	}
+	public void setIclass(String iclass) {
+		this.iclass = iclass;
+	}
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+	public int getUsertype() {
+		return usertype;
+	}
+	public void setUsertype(int usertype) {
+		this.usertype = usertype;
+	}
+	public String getCommunity() {
+		return community;
+	}
+	public void setCommunity(String community) {
+		this.community = community;
+	}
+	public String getPosition() {
+		return position;
+	}
+	public void setPosition(String position) {
+		this.position = position;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+	public int getStatus() {
+		return status;
+	}
+	public void setStatus(int status) {
+		this.status = status;
+	}
     
-	public String getbelongcommunity() {
-		return belongcommunity;
-	}
-
-	public void setbelongcommunity(String belongcommunity) {
-		this.belongcommunity = belongcommunity;
-	}
 	
-	public String getHeadimg() {
-		return headimg;
-	}
-
-	public void setHeadimg(String headimg) {
-		this.headimg = headimg;
-	}
-	
-    public String getEmail() {
-        return email;
-    }
- 
-    public void setEmail(String email) {
-        this.email = email;
-    }
- 
-    public String getCreateTime() {
-        return createTime;
-    }
- 
-    public void setCreateTime(String createTime) {
-        this.createTime = createTime;
-    }
- 
-    public String getLastLoginTime() {
-        return lastLoginTime;
-    }
- 
-    public void setLastLoginTime(String lastLoginTime) {
-        this.lastLoginTime = lastLoginTime;
-    }
- 
-    public int getUsertype() {
-        return usertype;
-    }
- 
-    public void setUsertype(int usertype) {
-        this.usertype = usertype;
-    }
- 
-    public static long getSerialversionuid() {
-        return serialVersionUID;
-    }
- 
-    public int getId() {
-        return id;
-    }
- 
-    public void setId(int id) {
-        this.id = id;
-    }
- 
-    public String getUsername() {
-        return username;
-    }
- 
-    public void setUsername(String username) {
-        this.username = username;
-    }
- 
-    public String getPassword() {
-        return password;
-    }
- 
-    public void setPassword(String password) {
-        this.password = password;
-    }
- 
 }

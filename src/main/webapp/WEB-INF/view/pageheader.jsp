@@ -18,7 +18,7 @@
         </a>
 
         <a class="navbar-brand" href="#">
-            <img src="<%=basePath%>assets/img/logo.png" alt="logo">
+            	这是一个简单的系统
         </a>
 
         <a href="#" class="btn btn-link sidebar-toggle d-md-down-none">
@@ -42,7 +42,7 @@
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img src="<%=basePath%>assets/img/avatar-1.png" class="avatar avatar-sm" alt="logo">
+                    <img src="<%=basePath%>assets/img/backgrounds/11.jpg" class="avatar avatar-sm" alt="logo">
                     <span class="small ml-1 d-md-down-none">John Smith</span>
                 </a>
 

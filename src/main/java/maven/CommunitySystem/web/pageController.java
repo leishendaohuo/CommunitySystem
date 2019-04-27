@@ -32,141 +32,275 @@ public class pageController{
 	 * @return<br>     
 	 */
 	@RequestMapping("/404")
-	public ModelAndView to404(ModelAndView mv) {
-		mv.setViewName("404");  
+	public ModelAndView to404(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("404");
+		}  
 		return mv;   
 	}
 	@RequestMapping("/500")
-	public ModelAndView to500(ModelAndView mv) {
-		mv.setViewName("500");  
-		return mv;   
+	public ModelAndView to500(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("404");
+		}  
+		return mv;     
 	}
 	@RequestMapping("/alerts")
-	public ModelAndView alerts(ModelAndView mv) {
-		mv.setViewName("alerts");  
-		return mv;   
+	public ModelAndView alerts(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("404");
+		}  
+		return mv;     
 	}
 	@RequestMapping("/blank")
-	public ModelAndView blank(ModelAndView mv) {
-		mv.setViewName("blank");  
-		return mv;   
+	public ModelAndView blank(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("404");
+		}  
+		return mv;     
 	}
 	@RequestMapping("/buttons")
-	public ModelAndView buttons(ModelAndView mv) {
-		mv.setViewName("buttons");  
-		return mv;   
+	public ModelAndView buttons(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("404");
+		}  
+		return mv;    
 	}
 	@RequestMapping("/cards")
-	public ModelAndView cards(ModelAndView mv) {
-		mv.setViewName("cards");  
-		return mv;   
+	public ModelAndView cards(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("404");
+		}  
+		return mv;     
 	}
 	@RequestMapping("/chartjs")
-	public ModelAndView chartjs(ModelAndView mv) {
-		mv.setViewName("chartjs");  
-		return mv;   
+	public ModelAndView chartjs(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("404");
+		}  
+		return mv;     
 	}
 	@RequestMapping("/firstpage")
-	public ModelAndView firstpage(ModelAndView mv) {
-		mv.setViewName("firstpage");  
-		return mv;   
+	public ModelAndView firstpage(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("404");
+		}  
+		return mv;     
 	}
 	@RequestMapping("/forms")
-	public ModelAndView forms(ModelAndView mv) {
-		mv.setViewName("forms");  
-		return mv;   
+	public ModelAndView forms(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("404");
+		}  
+		return mv;     
 	}
 	@RequestMapping("/index")
-	public ModelAndView index(ModelAndView mv) {
-		mv.setViewName("index");  
-		return mv;   
+	public ModelAndView index(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("index");
+		}  
+		return mv;     
 	}
 	@RequestMapping("/invoice")
-	public ModelAndView invoice(ModelAndView mv) {
-		mv.setViewName("invoice");  
-		return mv;   
+	public ModelAndView invoice(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("404");
+		}  
+		return mv;     
 	}
 	@RequestMapping("/layouts-fixed-header")
-	public ModelAndView layouts_fixed_header(ModelAndView mv) {
-		mv.setViewName("layouts-fixed-header");  
-		return mv;   
+	public ModelAndView layouts_fixed_header(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("404");
+		}  
+		return mv;     
 	}
 	@RequestMapping("/layouts-fixed-sidebar")
-	public ModelAndView layouts_fixed_sidebar(ModelAndView mv) {
-		mv.setViewName("layouts-fixed-sidebar");  
-		return mv;   
+	public ModelAndView layouts_fixed_sidebar(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("404");
+		}  
+		return mv;     
 	}
 	@RequestMapping("/layouts-hidden-sidebar")
-	public ModelAndView layouts_hidden_sidebar(ModelAndView mv) {
-		mv.setViewName("layouts-hidden-sidebar");  
-		return mv;   
+	public ModelAndView layouts_hidden_sidebar(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("404");
+		}  
+		return mv;     
 	}
 	@RequestMapping("/layouts-normal")
-	public ModelAndView layouts_normal(ModelAndView mv) {
-		mv.setViewName("layouts-normal");  
-		return mv;   
+	public ModelAndView layouts_normal(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("404");
+		}  
+		return mv;     
 	}
 	@RequestMapping("/login")
-	public ModelAndView login(ModelAndView mv) {
-		mv.setViewName("login");  
-		return mv;   
+	public ModelAndView login(HttpServletRequest req,ModelAndView mv) {
+		mv.setViewName("login");
+		return mv;     
 	}
 	@RequestMapping("/modals")
-	public ModelAndView modals(ModelAndView mv) {
-		mv.setViewName("modals");  
-		return mv;   
+	public ModelAndView modals(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("404");
+		}  
+		return mv;     
 	}
 	@RequestMapping("/progress-bars")
-	public ModelAndView progress_bars(ModelAndView mv) {
-		mv.setViewName("progress-bars");  
-		return mv;   
+	public ModelAndView progress_bars(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("404");
+		}  
+		return mv;     
 	}
 	@RequestMapping("/register")
-	public ModelAndView register(ModelAndView mv) {
-		mv.setViewName("register");  
-		return mv;   
+	public ModelAndView register(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("register");
+		}  
+		return mv;     
 	}
 	@RequestMapping("/settings")
-	public ModelAndView settings(ModelAndView mv) {
-		mv.setViewName("settings");  
-		return mv;   
+	public ModelAndView settings(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("settings");
+		}  
+		return mv;     
 	}
 	@RequestMapping("/tables")
-	public ModelAndView tables(ModelAndView mv) {
-		mv.setViewName("tables");  
-		return mv;   
+	public ModelAndView tables(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("404");
+		}  
+		return mv;     
 	}
 	@RequestMapping("/tabs")
-	public ModelAndView tabs(ModelAndView mv) {
-		mv.setViewName("tabs");  
-		return mv;   
+	public ModelAndView tabs(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("404");
+		}  
+		return mv;     
 	}
 	@RequestMapping("/widgets")
-	public ModelAndView widgets(ModelAndView mv) {
-		mv.setViewName("widgets");  
-		return mv;   
+	public ModelAndView widgets(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("404");
+		}  
+		return mv;     
 	}
-	@RequestMapping("/communitymessage")
-	public ModelAndView comunitymessage(ModelAndView mv) {
-		mv.setViewName("communitymessage");  
-		return mv;   
-	}
-	@RequestMapping("/communitymember")
-	public ModelAndView comunitymember(ModelAndView mv) {
-		mv.setViewName("communitymember");  
-		return mv;   
-	}
+	
 	@RequestMapping("/communityactivity")
-	public ModelAndView comunityactivity(ModelAndView mv) {
-		mv.setViewName("communityactivity");  
-		return mv;   
+	public ModelAndView comunityactivity(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("errorpage");
+		}  
+		return mv;     
+	}
+	@RequestMapping("/createcommunity")
+	public ModelAndView createcommunity(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("createcommunity");
+		}  
+		return mv;     
 	}
 	
 	@RequestMapping("/usermessage")
-	public ModelAndView usermessage(ModelAndView mv) {
-		mv.setViewName("usermessage");  
-		return mv;   
+	public ModelAndView usermessage(HttpServletRequest req,ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");  
+		}else {
+			mv.setViewName("usermessage");
+		}  
+		return mv;     
 	}
-	
-	
+	@RequestMapping("/communitymember")
+	public ModelAndView comunitymember(HttpServletRequest req, ModelAndView mv) {
+		HttpSession mySession=req.getSession(true);
+		if(mySession.getAttribute("id")==null) {
+			mv.setViewName("login");
+		}else {
+			String community=(String)mySession.getAttribute("community"); 
+			ArrayList<User> list=userService.Checkmemberdata(community);
+			if(list!=null) {
+				req.setAttribute("memberlist", list);
+			}
+			mv.setViewName("communitymember");  
+		}
+		return mv;    
+	}
 }

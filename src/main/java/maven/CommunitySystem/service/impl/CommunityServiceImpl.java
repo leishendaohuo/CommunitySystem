@@ -18,10 +18,14 @@ public class CommunityServiceImpl implements ICommunityService {
     @Resource
     private ICommunityDao Dao;
     
-    public Community SelectCommunity(String Communityname) {//根据id查询用户信息
+    public Community SelectCommunity(String Communityname) {//鎼滅储绀惧洟
     	return Dao.SelectCommunity(Communityname);
 	}
-    public ArrayList<Community> CheckCommunitydata(){//查询所有社团信息
+    public ArrayList<Community> CheckCommunitydata(){//鎼滅储绀惧洟鍒楄〃
     	return Dao.CheckCommunitydata();
     }
-}
+    
+    public boolean createcommunity(Map<String, String> map) {//鍒涘缓绀惧洟
+    	return Dao.createcommunity(map);
+    }
+}    

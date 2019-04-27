@@ -12,11 +12,10 @@
 	<title>login</title>
 	<link rel="stylesheet" href="<%=basePath%>assets/css/auth.css">
 </head>
-
-<body>
+<body style="background: url(<%=basePath%>/assets/img/backgrounds/12.jpg);background-size:cover;"> 
 	<div class="lowin lowin-blue">
 		<div class="lowin-brand">
-			<img src="<%=basePath%>assets/img/kodinger.jpg" alt="logo">
+			<img src="<%=basePath%>assets/img/backgrounds/11.jpg" alt="logo">
 		</div>
 		<div class="lowin-wrapper">
 			<div class="lowin-box lowin-login">
@@ -24,12 +23,14 @@
 					<form>
 						<p>Sign in to continue</p>
 						<div class="lowin-group">
-							<label>Email <a href="#" class="login-back-link">Sign in?</a></label>
-							<input type="email" autocomplete="email" name="email" class="lowin-input">
+							<label>ID <a href="#" class="login-back-link">Sign in?</a></label>
+							<input type="text" autocomplete="id" name="id" 
+							placeholder="请输入学号" pattern="[0-9]{6,15}" class="lowin-input">
 						</div>
 						<div class="lowin-group password-group">
 							<label>Password <a href="#" class="forgot-link">Forgot Password?</a></label>
-							<input type="password" name="password" autocomplete="current-password" class="lowin-input">
+							<input type="password" name="password" autocomplete="current-password" 
+							placeholder="请输入密码" pattern="[0-9]{6,15}" class="lowin-input">
 						</div>
 						<button class="lowin-btn login-btn">
 							Sign In
@@ -47,16 +48,19 @@
 					<form>
 						<p>Let's create your account</p>
 						<div class="lowin-group">
-							<label>Name</label>
-							<input type="text" name="name" autocomplete="name" class="lowin-input">
+							<label>ID</label>
+							<input type="text" name="id" autocomplete="id" 
+							placeholder="请输入学号" pattern="[0-9]{6,15}" class="lowin-input">
 						</div>
 						<div class="lowin-group">
-							<label>Email</label>
-							<input type="email" autocomplete="email" name="email" class="lowin-input">
+							<label>Username</label>
+							<input type="text" autocomplete="username" name="username" 
+							placeholder="请输入您的名字" class="lowin-input">
 						</div>
 						<div class="lowin-group">
 							<label>Password</label>
-							<input type="password" name="password" autocomplete="current-password" class="lowin-input">
+							<input type="password" name="password" autocomplete="current-password"
+							placeholder="请输入密码" pattern="[0-9]{6,15}" class="lowin-input">
 						</div>
 						<button class="lowin-btn">
 							Sign Up
@@ -71,15 +75,15 @@
 		</div>
 	
 		<footer class="lowin-footer">
-		<%=(String)session.getAttribute("message")%>
+		${message}
 		</footer>
 	</div>
 
 	<script src="<%=basePath%>assets/js/auth.js"></script>
 	<script>
 		Auth.init({
-			login_url: '#login',
-			forgot_url: '#forgot'
+			login_url: 'login',
+			forgot_url: 'forgot',
 		});
 	</script>
 </body>

@@ -2,7 +2,8 @@ package maven.CommunitySystem.service;
  
 import java.util.ArrayList;
 import java.util.Map;
- 
+
+import maven.CommunitySystem.entity.Community;
 import maven.CommunitySystem.entity.User;
  
 public interface IUserService {
@@ -14,18 +15,27 @@ public interface IUserService {
      * @param map
      * @return
      */
-	public User Login(Map<String, String> map);//µÇÂ¼
+	public User Login(Map<String, String> map);//ç™»å½•
 	 
-    public User SelectUser(String Communityname);//¸ù¾İid²éÑ¯ÓÃ»§ĞÅÏ¢
+    public User SelectUser(String Communityname);//æœç´¢ç”¨æˆ·
     
-    public User SelectUserByEail(String email);//¸ù¾İÓÊÏä²éÑ¯ÓÃ»§ĞÅÏ¢
+    public User SelectUserByEail(String email);//æ ¹æ®é‚®ç®±æœç´¢ç”¨æˆ·
     
-    public boolean UpdateUser(Map<String, String> map);//¸üĞÂÊı¾İ
+    public User SelectUserId(String id);//æ ¹æ®idæœç´¢ç”¨æˆ·
     
-    public boolean AddUser(Map<String, String> map);//Ìí¼ÓÓÃ»§
+    public boolean UpdateUser(Map<String, String> map);//æ›´æ–°ç”¨æˆ·ä¿¡æ¯
     
-    public boolean DeleteUser(Map<String, String> map);//É¾³ıÓÃ»§
+    public boolean AddUser(Map<String, String> map);//æ·»åŠ ç”¨æˆ·
     
-    public boolean changes(Map<String, String> map);//¸ü¸ÄĞÅÏ¢
+    public boolean DeleteUser(Map<String, String> map);//åˆ é™¤ç”¨æˆ·
+    
+    public boolean changes(Map<String, String> map);//å®Œæ•´çš„æ›´æ–°ç”¨æˆ·ä¿¡æ¯
+    
+    public ArrayList<User> Checkmemberdata(String community);//æœç´¢ç¤¾å›¢æˆå‘˜åˆ—è¡¨
+    
+    public boolean applycommunity(Map<String, String> map);//ç”³è¯·ç¤¾å›¢
+    
+    public boolean cancelcommunity(Map<String, String> map);//å–æ¶ˆç”³è¯·
+
  
 }

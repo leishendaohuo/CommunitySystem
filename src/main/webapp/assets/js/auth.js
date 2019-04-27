@@ -27,7 +27,7 @@ var Auth = {
 
 		Auth.setHeight(Auth.vars.lowin_register.offsetHeight + Auth.vars.lowin_footer.offsetHeight);
 		Auth.vars.lowin_register.querySelector('form').setAttribute('action', "/maven.CommunitySystem/user/toregister");
-		Auth.vars.lowin_register.querySelector('form').setAttribute('method', "post");
+		Auth.vars.lowin_register.querySelector('form').setAttribute('method', "get");
 
 		e.preventDefault();
 	},
@@ -48,7 +48,7 @@ var Auth = {
 
 		Auth.setHeight(Auth.vars.lowin_login.offsetHeight + Auth.vars.lowin_footer.offsetHeight);
 		Auth.vars.lowin_login.querySelector('form').setAttribute('action', "/maven.CommunitySystem/user/tologin");
-		Auth.vars.lowin_login.querySelector('form').setAttribute('method', "post");
+		Auth.vars.lowin_login.querySelector('form').setAttribute('method', "get");
 
 		e.preventDefault();
 	},
@@ -67,7 +67,7 @@ var Auth = {
 		//忘记密码
 		Auth.setHeight(Auth.vars.lowin_wrapper_height - Auth.vars.password_group_height);
 		Auth.vars.lowin_login.querySelector('form').setAttribute('action', "/maven.CommunitySystem/user/toforgot");
-		Auth.vars.lowin_login.querySelector('form').setAttribute('method', "post");
+		Auth.vars.lowin_login.querySelector('form').setAttribute('method', "get");
 
 		e.preventDefault();
 	},
@@ -89,7 +89,7 @@ var Auth = {
 
 		Auth.vars.login_btn.innerText = 'Sign In';
 		Auth.vars.lowin_login.querySelector('form').setAttribute('action', "/maven.CommunitySystem/user/tologin");
-		Auth.vars.lowin_login.querySelector('form').setAttribute('method', "post");
+		Auth.vars.lowin_login.querySelector('form').setAttribute('method', "get");
 
 		Auth.setHeight(Auth.vars.lowin_wrapper_height);
 		
@@ -113,7 +113,7 @@ var Auth = {
 
 		Auth.vars.option = option;
 		Auth.vars.lowin_login.querySelector('form').setAttribute('action', "/maven.CommunitySystem/user/tologin");
-		Auth.vars.lowin_login.querySelector('form').setAttribute('method', "post");
+		Auth.vars.lowin_login.querySelector('form').setAttribute('method', "get");
 
 		var len = Auth.vars.box.length - 1;
 

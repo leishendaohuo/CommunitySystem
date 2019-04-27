@@ -2,19 +2,29 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="maven.CommunitySystem.dao.ICommunityDao">
     <resultMap id="BaseResultMap" type="maven.CommunitySystem.entity.Community">
-        <result column="id" property="id" jdbcType="INTEGER" />
-        <result column="Communityname" property="communityname" jdbcType="VARCHAR" />
-        <result column="membernum" property="membernum" jdbcType="VARCHAR" />
-        <result column="create_time" property="createtime" jdbcType="DATE" />
-        <result column="url" property="url" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="createdate" property="createdate" jdbcType="VARCHAR" />
+        <result column="number" property="number" jdbcType="VARCHAR" />
+        <result column="recommend" property="recommend" jdbcType="VARCHAR" />
+        <result column="award" property="award" jdbcType="VARCHAR" />
+        <result column="creator" property="creator" jdbcType="VARCHAR" />
     </resultMap>
+ 
+ 	<!--添加用户 -->
+    <insert id="createcommunity" parameterType="java.util.Map">  
+        INSERT 
+        INTO 
+        communitytable
+        (name,createdate,number,recommend,award,creator) 
+        VALUES (#{name,jdbcType=VARCHAR}, #{createdate,jdbcType=VARCHAR}, "1", #{recommend,jdbcType=VARCHAR},#{award,jdbcType=VARCHAR},#{creator,jdbcType=VARCHAR})  
+    </insert>
  
  	<!-- 查询所有社团信息 -->
  	<select id="CheckCommunitydata" resultType="maven.CommunitySystem.entity.Community">
         SELECT
-        id,Communityname,membernum,create_time,url
+        name,createdate,number,recommend,award
         FROM
-        Community
+        communitytable
         LIMIT
         20
     </select>
@@ -24,27 +34,27 @@
         SELECT
         *
         FROM
-        Community
+        communitytable
         WHERE
-        Communityname=#{Communityname,jdbcType=VARCHAR}
+        name=#{name,jdbcType=VARCHAR}
     </select>
     
     <!--添加用户 -->
     <insert id="AddCommunity" parameterType="java.util.Map">  
         INSERT 
         INTO 
-        Community
-        (Communityname,email,create_time,url) 
-        VALUES (#{Communityname,jdbcType=VARCHAR}, null, null, null)  
+        communitytable
+        (name,createdate,number,recommend,award,creator) 
+        VALUES (#{name,jdbcType=VARCHAR}, null, "1", null,null,#{creator,jdbcType=VARCHAR})  
     </insert>
     
     <!--删除用户 -->
     <delete id="DeleteCommunity" parameterType="java.util.Map">
         DELETE
         FROM
-        Community
+        communitytable
         WHERE
-        Communityname=#{communityname,jdbcType=VARCHAR}
+        name=#{name,jdbcType=VARCHAR}
     </delete>
     
     <!--用户查询 -->
@@ -52,19 +62,19 @@
         SELECT
         *
         FROM
-        Community
+        communitytable
         WHERE
-        Communityname=#{Communityname,jdbcType=VARCHAR}
+        name=#{name,jdbcType=VARCHAR}
     </select>
     
     <!--更新信息 -->
     <update id="UpdateCommunity" parameterType="java.util.Map">
         UPDATE
-        Community
+        communitytable
         SET
-        Communityname=#{newname,jdbcType=VARCHAR}
+        name=#{newname,jdbcType=VARCHAR}
         WHERE
-        Communityname=#{oldname,jdbcType=VARCHAR}
+        name=#{oldname,jdbcType=VARCHAR}
     </update>
  
 </mapper> 

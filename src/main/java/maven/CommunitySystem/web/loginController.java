@@ -13,6 +13,9 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import maven.CommunitySystem.entity.Community;
+import maven.CommunitySystem.service.ICommunityService;
 //import com.alibaba.fastjson.JSONArray;
 //import com.alibaba.fastjson.JSONObject;
 import maven.CommunitySystem.entity.User;
@@ -23,6 +26,9 @@ import maven.CommunitySystem.service.IUserService;
 public class loginController{
 	@Resource
 	private IUserService userService;
+	
+	@Resource
+	private ICommunityService communityService;
 	/*
 	 *
 	 * @param req    
@@ -30,79 +36,98 @@ public class loginController{
 	 * @return<br>     
 	 */
 	
-	//µÇÂ¼
+	//ç™»å½•
 	@RequestMapping("/tologin")
 	public ModelAndView tologin(HttpServletRequest req, ModelAndView mv) {
 		Map<String, String> map = new HashMap<String, String>();        
-		map.put("email", req.getParameter("email"));
+		map.put("id", req.getParameter("id"));
 		map.put("password", req.getParameter("password"));        
 		User user = userService.Login(map);
 		HttpSession mySession=req.getSession(true);
-		//Çå¿Õ´íÎóÏûÏ¢
+		//æ¸…ç©ºé”™è¯¯ä¿¡æ¯
         mySession.setAttribute("message","");
-		if (user != null) {//µÇÂ¼³É¹¦        
+		if (user != null) {//ç”¨æˆ·å­˜åœ¨    
 			mySession.setAttribute( "id", user.getId());
 			mySession.setAttribute( "username", user.getUsername());
 			mySession.setAttribute( "password", user.getPassword());
 			mySession.setAttribute( "email", user.getEmail());
-			mySession.setAttribute( "headimg", user.getHeadimg());
-			if (user.getbelongcommunity()==null) {
-				mySession.setAttribute( "belongcommunity", "ÎŞ");
+			mySession.setAttribute( "college", user.getCollege());
+			mySession.setAttribute( "major", user.getMajor());
+			mySession.setAttribute( "iclass", user.getIclass());
+			mySession.setAttribute( "grade", user.getGrade());
+			//ç”³è¯·çŠ¶æ€
+			mySession.setAttribute( "status", user.getStatus());
+			//æ˜¯å¦æœ‰ç¤¾å›¢
+			if (user.getCommunity()==null) {
+				mySession.setAttribute( "community", "æ— ");
+				mySession.setAttribute( "position", "æ— ");
 			}else {
-				mySession.setAttribute( "belongcommunity", user.getbelongcommunity());
+				Community community=communityService.SelectCommunity(user.getCommunity());
+				//ç¤¾å›¢ä¸å­˜åœ¨
+				if (community==null) {
+					mySession.setAttribute( "community", "æ‚¨çš„ç¤¾å›¢ä¸å­˜åœ¨");
+					mySession.setAttribute( "position", "æ— ");
+				}
+				//ç¤¾å›¢å­˜åœ¨
+				else {
+					mySession.setAttribute( "community", user.getCommunity());
+					mySession.setAttribute( "position", user.getPosition());
+				}
 			}
+			//ç”¨æˆ·èº«ä»½
 			if(user.getUsertype()==0)
-				mySession.setAttribute( "usertype", "ÓÃ»§");
+				mySession.setAttribute( "usertype", "ç”¨æˆ·");
 			else if (user.getUsertype()==1) {
-				mySession.setAttribute( "usertype", "¹ÜÀíÔ±");
+				mySession.setAttribute( "usertype", "ç®¡ç†å‘˜");
 			}
+			
 			mv.setViewName("index");
-		} else {//µÇÂ¼Ê§°Ü            
-			mv.addObject("message", "ÃÜÂë´íÎó»òÕßÓÃ»§²»´æÔÚ");            
+		} else {//ç™»å½•å¤±è´¥          
+			mv.addObject("message", "IDæˆ–è€…å¯†ç è¾“å…¥é”™è¯¯");            
 			mv.setViewName("login");
 		}        
 		return mv;   
 	}
 	
-	//×¢²á
+	//æ³¨å†Œ
 	@RequestMapping("/toregister")
 	public ModelAndView toregister(HttpServletRequest req, ModelAndView mv) {
 		HttpSession mySession=req.getSession(true);
-		//Çå¿Õ´íÎóÏûÏ¢
-		mySession.setAttribute("message","");
-		if(req.getParameter("email")!=""&&req.getParameter("name")!=""&&req.getParameter("password")!="") {
-			//Ê×ÏÈÅĞ¶ÏÓÃ»§ÓÊÏäÊÇ·ñÒÑ¾­×¢²á
-			User user=userService.SelectUserByEail(req.getParameter("email"));
+		//æ¸…ç©ºé”™è¯¯ä¿¡æ¯
+		mySession.setAttribute("message"," ");
+		if(req.getParameter("id")!=""&&req.getParameter("username")!=""&&req.getParameter("password")!="") {
+			//ä¿¡æ¯ä¸ä¸ºç©º
+			User user=userService.SelectUserId(req.getParameter("id"));
 			if (user!=null) {
-				mySession.setAttribute( "message", "ÓÃ»§ÒÑ´æÔÚ");
+				mv.addObject("message", "ç”¨æˆ·å·²å­˜åœ¨");  
 				mv.setViewName("login");
 			}
 			else {
 				Map<String, String> map = new HashMap<String, String>();
-				map.put("email", req.getParameter("email"));
-				map.put("username", req.getParameter("name"));
+				map.put("id", req.getParameter("id"));
+				map.put("username", req.getParameter("username"));
 				map.put("password", req.getParameter("password"));
 				
-				if(userService.AddUser(map)) {//³É¹¦×¢²á
-					mySession.setAttribute( "message", "×¢²á³É¹¦");
+				if(userService.AddUser(map)) {//æ·»åŠ ç”¨æˆ·
+					mv.addObject("message", "æ³¨å†ŒæˆåŠŸ");  
 					mv.setViewName("login");
-				} else {//×¢²áÊ§°Ü            
-					mySession.setAttribute( "message", "×¢²áÊ§°Ü£¬ÓÃ»§ÒÑ¾­´æÔÚ");            
+				} else {//×¢ï¿½ï¿½Ê§ï¿½ï¿½            
+					mv.addObject("message", "æ³¨å†Œå¤±è´¥");            
 					mv.setViewName("login");
 				}
 			}
 		}else {
-				mySession.setAttribute( "message", "ÇëÊäÈëÍêÕûĞÅÏ¢");            
+				mv.addObject( "message", "è¯·è¾“å…¥å®Œæ•´ä¿¡æ¯");            
 				mv.setViewName("login");
 		}
 		//mySession.setMaxInactiveInterval(5);
 		return mv;   
 	}
 	
-	//Íü¼ÇÃÜÂë
+	//å¿˜è®°å¯†ç 
 	@RequestMapping("/toforgot")
 	public ModelAndView toforgot(HttpServletRequest req, ModelAndView mv) {
-		mv.setViewName("errorpage");
+		mv.setViewName("errorpage2");
 		return mv;
 	}		
 }

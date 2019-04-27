@@ -21,9 +21,20 @@
 			<param-value>classpath:spring/spring-*.xml</param-value>
 		</init-param>
 	</servlet>
+	
+	<servlet>
+		<servlet-name>Encodeing</servlet-name>
+		<servlet-class>cn.hncu.com.encode.Encodeing</servlet-class>
+		<init-param>
+			<param-name>charset</param-name>
+			<param-value>utf-8</param-value>
+		</init-param>
+	</servlet>
+
 	<servlet-mapping>
 		<servlet-name>seckill-dispatcher</servlet-name>
 		<!-- 默认匹配所有的请求 -->
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
 </web-app>

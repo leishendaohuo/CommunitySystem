@@ -15,8 +15,10 @@ public interface ICommunityService {
      * @param map
      * @return
      */
-	public Community SelectCommunity(String communityname);//根据id查询用户信息
+	public Community SelectCommunity(String communityname);//鎼滅储绀惧洟
 	
-    public ArrayList<Community> CheckCommunitydata();//查询所有社团信息
+    public ArrayList<Community> CheckCommunitydata();//鏌ヨ绀惧洟鍒楄〃
+    
+    public boolean createcommunity(Map<String, String> map);//鍒涘缓绀惧洟
  
 }

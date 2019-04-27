@@ -13,15 +13,17 @@ public interface ICommunityDao {
      * @param map
      * @return
      */
-    public Community Login(Map<String, String> map);//µÇÂ¼ÉçÍÅ
+    public Community Login(Map<String, String> map);//ç™»å½•
  
-    public Community SelectCommunity(String communityname);//²éÑ¯ÉçÍÅĞÅÏ¢
+    public Community SelectCommunity(String communityname);//æ ¹æ®ç¤¾å›¢åå­—æœç´¢ç¤¾å›¢
     
-    public boolean UpdateCommunity(Map<String, String> map);//¸úĞÂÉçÍÅĞÅÏ¢
+    public boolean UpdateCommunity(Map<String, String> map);//æ›´æ–°ç¤¾å›¢ä¿¡æ¯
     
-    public boolean AddCommunity(Map<String, String> map);//´´½¨ÉçÍÅ
+    public boolean AddCommunity(Map<String, String> map);//åˆ›å»ºç¤¾å›¢
     
-    public boolean DeleteCommunity(Map<String, String> map);//×¢ÏúÉçÍÅ
+    public boolean DeleteCommunity(Map<String, String> map);//åˆ é™¤ç¤¾å›¢
     
-    public ArrayList<Community> CheckCommunitydata();//»ñÈ¡ÉçÍÅĞÅÏ¢
+    public ArrayList<Community> CheckCommunitydata();//æŸ¥è¯¢ç¤¾å›¢æ‰€æœ‰ä¿¡æ¯
+    
+    public boolean createcommunity(Map<String, String> map);//åˆ›å»ºç¤¾å›¢
 }

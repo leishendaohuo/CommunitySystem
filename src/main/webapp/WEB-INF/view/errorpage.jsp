@@ -20,9 +20,9 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12 text-center">
-                <span class="display-1 d-block">666</span>
-                <div class="mb-4">此功能暂时未开发.</div>
-                <a href="login" class="btn btn-link">Back to Home</a>
+                <span class="display-1 d-block">I DON'T WANT IT EITHER.</span>
+                <div class="mb-4">您想用的功能暂时未开发.</div>
+                <a href="index" class="btn btn-link">Back to Home</a>
             </div>
         </div>
     </div>
